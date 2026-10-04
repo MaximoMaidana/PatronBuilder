@@ -31,7 +31,7 @@ class ConsultaSQL {
 console.log("\n--- CONSTRUCTOR DE SQL (SIN BUILDER) ---");
 
 // 1. Consulta Simple (Obtener todos los usuarios)
-// Nota: Funciona, pero si queremos agregar un LIMIT, el constructor nos obligará a llenar lo demás.
+// Nota: Funciona
 const consultaSimple = new ConsultaSQL("usuarios");
 consultaSimple.ejecutar();
 
