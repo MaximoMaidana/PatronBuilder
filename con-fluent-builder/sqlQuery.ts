@@ -1,3 +1,4 @@
+// 1. PRODUCTO
 class ConsultaSQL {
     public tabla!: string;
     public campos: string = "*";
@@ -14,7 +15,18 @@ class ConsultaSQL {
     }
 }
 
-class QueryBuilder {
+// 2. BUILDER (La Interfaz abstracta)
+// Exige que todos los métodos retornen 'this' para garantizar el encadenamiento
+interface IQueryBuilder {
+    select(campos: string): this;
+    where(condicion: string): this;
+    orderBy(orden: string): this;
+    limit(limite: number): this;
+    build(): ConsultaSQL;
+}
+
+// 3. CONCRETE BUILDER (Implementa la interfaz)
+class QueryBuilder implements IQueryBuilder {
     private consulta: ConsultaSQL;
 
     constructor(tabla: string) {
@@ -24,7 +36,7 @@ class QueryBuilder {
 
     select(campos: string): this {
         this.consulta.campos = campos;
-        return this;
+        return this; // Retorna la propia instancia (Fluent)
     }
 
     where(condicion: string): this {
@@ -47,14 +59,9 @@ class QueryBuilder {
     }
 }
 
-console.log("\n--- CONSTRUCTOR DE SQL (CON BUILDER) ---");
+console.log("\n--- FLUENT BUILDER (Con Interfaz) ---");
 
-// 1. Consulta Simple (Obtener todos los usuarios)
-const consultaSimple = new QueryBuilder("usuarios").build();
-consultaSimple.ejecutar();
-
-// 2. Consulta Compleja (10 usuarios activos más recientes)
-// Nota: El encadenamiento de métodos se lee exactamente igual que la sintaxis nativa de SQL. La intención es 100% clara.
+// 1. Consulta Compleja (10 usuarios activos más recientes)
 const consultaFiltro = new QueryBuilder("usuarios")
     .where("estado = 'activo'")
     .orderBy("fecha_creacion DESC")
@@ -62,8 +69,7 @@ const consultaFiltro = new QueryBuilder("usuarios")
     .build();
 consultaFiltro.ejecutar();
 
-// 3. Consulta Intermedia (Solo obtener 5 correos)
-// Nota: No hay rastro de los parámetros intermedios (where, orderBy). Simplemente los omitimos y construimos lo que necesitamos.
+// 2. Consulta Intermedia (Solo obtener 5 correos)
 const consultaCorreos = new QueryBuilder("usuarios")
     .select("email")
     .limit(5)
