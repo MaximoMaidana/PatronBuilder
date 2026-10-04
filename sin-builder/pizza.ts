@@ -30,11 +30,11 @@ class Pizza {
 console.log("\n--- PIDIENDO PIZZA SIN BUILDER ---");
 
 console.log("\n1. Pizza de Pepperoni (Clásica):");
-console.log("Nota: Tenemos que pasar 'undefined' a quesoExtra para llegar al pepperoni, y más 'undefined' si no queremos lo demás.");
+//Nota: Tenemos que pasar 'undefined' a quesoExtra para llegar al pepperoni, y más 'undefined' si no queremos lo demás.
 const pizzaPepperoni = new Pizza("Mediana", "Fina", undefined, true, undefined, undefined);
 pizzaPepperoni.mostrarDetalles();
 
 console.log("\n2. Pizza Vegana (Solo masa, champiñones y aceitunas):");
-console.log("Nota: ¿Qué significan todos esos 'undefined' seguidos? Es imposible saberlo sin leer la clase original.");
+//Nota: ¿Qué significan todos esos 'undefined' seguidos? Es imposible saberlo sin leer la clase original.
 const pizzaVegana = new Pizza("Familiar", "Integral", undefined, undefined, true, true);
 pizzaVegana.mostrarDetalles();
