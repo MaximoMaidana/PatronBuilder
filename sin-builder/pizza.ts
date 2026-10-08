@@ -34,7 +34,7 @@ console.log("\n1. Pizza de Pepperoni (Clásica):");
 const pizzaPepperoni = new Pizza("Mediana", "Fina", undefined, true, undefined, undefined);
 pizzaPepperoni.mostrarDetalles();
 
-console.log("\n2. Pizza Vegana (Solo masa, champiñones y aceitunas):");
+console.log("\n2. Pizza Champiñones (Solo masa, champiñones y aceitunas):");
 //Nota: ¿Qué significan todos esos 'undefined' seguidos? Es imposible saberlo sin leer la clase original.
-const pizzaVegana = new Pizza("Familiar", "Integral", undefined, undefined, true, true);
-pizzaVegana.mostrarDetalles();
+const pizzaChampinones = new Pizza("Familiar", "Integral", undefined, undefined, true, true);
+pizzaChampinones.mostrarDetalles();
